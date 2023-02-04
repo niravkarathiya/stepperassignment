@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div>
+            <button class="btn-add-emp" mat-button mat-raised-button color="primary" (click)="addEmployee()">+ Add Employee</button>
+        </div>
+    </div>
+    <div class="row">
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="CompanyName">
+                <th mat-header-cell *matHeaderCellDef> Company Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.CompanyName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Position">
+                <th mat-header-cell *matHeaderCellDef> Position </th>
+                <td mat-cell *matCellDef="let element"> {{element.Position}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TotalYear">
+                <th mat-header-cell *matHeaderCellDef> TotalYear </th>
+                <td mat-cell *matCellDef="let element"> {{element.TotalYear}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="LastCTC">
+                <th mat-header-cell *matHeaderCellDef> LastCTC </th>
+                <td mat-cell *matCellDef="let element"> {{element.LastCTC}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon>edit</mat-icon>
+                    <mat-icon>delete</mat-icon>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

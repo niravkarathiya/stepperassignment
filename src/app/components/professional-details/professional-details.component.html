@@ -1,0 +1,72 @@
+<div class="container">
+  <form [formGroup]="proffesionalDetailsForm">
+    <div class="row">
+      <h2>Proffesional Details</h2>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Designation</mat-label>
+          <input matInput placeholder="Enter Designation" formControlName="designation">
+          <mat-error>Designation is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Department</mat-label>
+          <input matInput placeholder="Enter Department" formControlName="department">
+          <mat-error>Department is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Year</mat-label>
+          <mat-select formControlName="year">
+            <mat-option *ngFor="let year of years" value={{year}}>{{year}}</mat-option>
+          </mat-select>
+          <mat-error>Year is Required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Months</mat-label>
+          <mat-select formControlName="month">
+            <mat-option *ngFor="let month of months" value={{month}}>{{month}}</mat-option>
+          </mat-select>
+          <mat-error>Months is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Current Location</mat-label>
+          <input matInput placeholder="Enter Current Location" formControlName="currentLocation">
+          <mat-error>Current Location is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Skills</mat-label>
+          <mat-select formControlName="skills" multiple>
+            <mat-select-trigger>
+              {{proffesionalDetailsForm.get('skills')?.value || ''}}
+              <span *ngIf="(proffesionalDetailsForm.get('skills')?.value  || 0) > 1">
+                (+{{(proffesionalDetailsForm.get('skills')?.value || 0) - 1}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let skill of skillsList" [value]="skill">{{skill}}</mat-option>
+          </mat-select>
+          <mat-error>Please Select Skills</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload formControlName="resume">
+        {{fileName || "No file uploaded yet."}}
+        <button mat-mini-fab color="primary" (click)="fileUpload.click()" type="button">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

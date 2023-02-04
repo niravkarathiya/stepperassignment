@@ -1,0 +1,19 @@
+.container{
+  width: 100%;
+  justify-content: center;
+  display: block;
+}
+.row{
+  width: 100%;
+  display: flex;
+  padding:20px;
+  margin:10px;
+  justify-content: left;
+}
+
+mat-form-field{
+  margin: 10px;
+}
+
+
+

@@ -1,0 +1,83 @@
+<div class="container">
+  <form [formGroup]="personalDetailsForm">
+    <div class="row">
+      <h2>Personal Details</h2>
+    </div>
+    <div>
+      <div>
+        <div class="profile-img">
+          <img src="" width="100%" height="100%">
+        </div>
+          <input mtInput formControlName="profile" type="file">
+        </div>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Enter First Name" formControlName="firstName">
+          <mat-error>First Name is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Middle Name</mat-label>
+          <input matInput placeholder="Enter Middle Name" formControlName="middleName">
+          <mat-error>Middle Name is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Enter Last Name" formControlName="lastName">
+          <mat-error>Last Name is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter Email" formControlName="email">
+          <mat-error>Email is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Enter Phone Number" formControlName="phone">
+          <mat-error>Phone Number is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dob">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>Date of birth is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Present Address</mat-label>
+          <textarea matInput formControlName="presentAddress"></textarea>
+          <mat-error>Present Address Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+        <mat-label>Permanent Address</mat-label>
+        <textarea matInput formControlName="permanentAddress"></textarea>
+        <mat-error>Permanent Address Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <mat-checkbox (change)="copyAddress()">Same as Present Address</mat-checkbox>
+    </div>
+  </form>
+</div>

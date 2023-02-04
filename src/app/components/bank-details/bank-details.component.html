@@ -1,0 +1,55 @@
+<div class="container">
+  <form [formGroup]="bankDetailsForm">
+    <div class="row">
+      <h2>Bank Details</h2>
+    </div>
+    <div class="row">
+    </div>
+    <div class="row mt-5">
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Bank Name</mat-label>
+          <input matInput placeholder="Enter Bank Name" formControlName="bankName">
+          <mat-error>Bank Name is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Account Name</mat-label>
+          <input matInput placeholder="Enter Account Name" formControlName="accountName">
+          <mat-error>Account Name is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Bank Account Number</mat-label>
+          <input matInput placeholder="Enter Account Number" formControlName="accountNubmer">
+          <mat-error>Account Number is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>IFSC</mat-label>
+          <input matInput placeholder="Enter IFSC Code" formControlName="IFSC">
+          <mat-error>IFSC is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Adhar Number</mat-label>
+          <input matInput placeholder="Enter Adhar Number" formControlName="adhar">
+          <mat-error>Adhar Number is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field appearance="outline">
+          <mat-label>PAN Number</mat-label>
+          <input matInput placeholder="Enter PAN Number" formControlName="PAN">
+          <mat-error>PAN Number is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

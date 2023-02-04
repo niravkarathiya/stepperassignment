@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+      <div class="header">
+        <span>Experience Details</span>`
+      </div>
+    </div>
+    <div class="row">
+      <div class="btn-add-exp">
+        <button mat-raised-button color="warn" (click)="addExperience()">+ Add Experience</button>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <form [formGroup]="experienceDetailsForm" autocomplete="off">
+          <div formArrayName="experiences">
+            <mat-table [dataSource]="dataSource">
+              <ng-container matColumnDef="companyName">
+                <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+                <mat-cell *matCellDef="let element;" [formGroup]="element">
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Company Name" required formControlName="companyName">
+                  </mat-form-field>
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
+                <mat-cell *matCellDef="let element;" [formGroup]="element" >
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Position" required formControlName="position">
+                  </mat-form-field>
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="totalYear">
+                <mat-header-cell *matHeaderCellDef> Total Year </mat-header-cell>
+                <mat-cell *matCellDef="let element;" [formGroup]="element" >
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Total Year" required formControlName="totalYear">
+                  </mat-form-field>
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="lastCTC">
+                <mat-header-cell *matHeaderCellDef> Last CTC </mat-header-cell>
+                <mat-cell *matCellDef="let element;" [formGroup]="element" >
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Last CTC" required formControlName="lastCTC">
+                  </mat-form-field>
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                <mat-cell *matCellDef="let element" [formGroup]="element">
+                  <div class="btn-list">
+                    <button mat-mini-fab color="primary">
+                      <mat-icon>check</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="warn" (click)="removeExperience(element)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </mat-cell>
+              </ng-container>
+  
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="dataSource.length === 0">
+        No Record Found !
+      </div>
+    </div>
+  </div>

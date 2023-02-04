@@ -1,0 +1,35 @@
+<div class="container" >
+    <mat-stepper linear #stepper>
+        <mat-step>
+            <ng-template matStepLabel>Personal Details</ng-template>
+            <app-personal-details [personalDetailsForm]="personalDetails"></app-personal-details>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Bank Details</ng-template>
+            <app-bank-details [bankDetailsForm]="bankDetails"></app-bank-details>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Professional Details</ng-template>
+            <app-professional-details [proffesionalDetailsForm]="proffesionalDetails"></app-professional-details>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Education Details</ng-template>
+            <app-education-details [educationalDetailsForm]="educationalDetails"></app-education-details>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Experience Details</ng-template>
+            <app-experience-details [experienceDetailsForm]="experienceDetails"></app-experience-details>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Current Organization Details</ng-template>
+            <app-current-organization-details [currentOrgDetailsForm]="currentOrgDetails"></app-current-organization-details>
+        </mat-step>
+    </mat-stepper>
+    <div class="btn-list">
+        <button class="btn btn-danger" (click)="goBack(stepper)" mat-raised-button color="primary">Back</button>
+        <button class="btn btn-primary" (click)="stepper.selectedIndex === 5? saveData():goForward(stepper)" mat-raised-button color="accent">{{stepper.selectedIndex === 5?'Save':'Next'}}</button>
+      
+    </div>
+</div>
+
+

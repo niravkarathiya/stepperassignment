@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="currentOrgDetailsForm">
+    <div class="row">
+      <h2>Current Organization Details</h2>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label> Joining date</mat-label>
+          <input matInput placeholder="Joining Date" formControlName="joiningDate">
+          <mat-error>Joining date is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Next Appraisal Date</mat-label>
+          <input matInput placeholder="Next Appraisal Date" formControlName="nextAppraisalDate">
+          <mat-error>Next Appraisal Date Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Current CTC</mat-label>
+          <input matInput placeholder="Enter Current CTC" formControlName="currentCTC">
+          <mat-error>Current CTC is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

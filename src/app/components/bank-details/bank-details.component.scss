@@ -1,0 +1,29 @@
+.container{
+  width: 100%;
+  justify-content: center;
+  display: block;
+}
+.row{
+  width: 100%;
+  display: flex;
+  padding:20px;
+  margin:10px;
+  justify-content: left;
+  padding: 0;
+  margin: 0;
+}
+
+mat-form-field{
+  margin: 10px;
+}
+
+.profile-img{
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+}
+
+
