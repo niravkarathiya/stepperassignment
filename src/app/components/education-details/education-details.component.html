@@ -51,7 +51,8 @@
               <mat-header-cell *matHeaderCellDef> Year Of Passing </mat-header-cell>
               <mat-cell *matCellDef="let element;" [formGroup]="element">
                 <mat-form-field appearance="outline">
-                  <input matInput placeholder="Year Of Passing" required formControlName="yearOfPassing">
+                  <input matInput placeholder="Year Of Passing" required formControlName="yearOfPassing" type="number"
+                    [max]="4">
                   <mat-error>Year Of Passing is Required</mat-error>
                 </mat-form-field>
               </mat-cell>
