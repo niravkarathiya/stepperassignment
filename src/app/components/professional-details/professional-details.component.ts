@@ -23,6 +23,7 @@ export class ProfessionalDetailsComponent implements OnInit {
     this.cvPath = this.proffesionalDetailsForm.controls['resume']?.value.path;
   }
 
+  // select resume 
   onFileSelected(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -43,6 +44,7 @@ export class ProfessionalDetailsComponent implements OnInit {
     }
   }
 
+  // remove rsume 
   removeResume() {
     this.proffesionalDetailsForm.patchValue({
       resume: ''
@@ -50,6 +52,7 @@ export class ProfessionalDetailsComponent implements OnInit {
     this.fileName = '';
   }
 
+  // resume preview
   viewResume() {
     this.dialog.open(CvProfilePreviewComponent, {
       data: {

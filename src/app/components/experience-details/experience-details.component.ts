@@ -24,7 +24,6 @@ export class ExperienceDetailsComponent {
       this.dataSource = [...this.experiences.controls];
     }
   }
-
   displayedColumns: string[] = ['companyName', 'position', 'totalYear', 'lastCTC', 'action'];
   dataSource: any[] = [];
   experiencesData: any = [];
@@ -34,6 +33,7 @@ export class ExperienceDetailsComponent {
     return this.experienceDetailsForm.get("experiences") as FormArray
   }
 
+  //create new from group for experience form array
   newExperience(data?: any) {
     return this.fb.group({
       id: [data?.id || Math.floor(1000 + Math.random() * 9000)],
@@ -44,12 +44,14 @@ export class ExperienceDetailsComponent {
     })
   }
 
+  //add new experience 
   addExperience() {
     this.addNewExperience = false;
     this.experiences.push(this.newExperience());
     this.dataSource = [...this.experiences.controls];
   }
 
+  //remove experience
   removeExperience(element: any) {
     const index = this.experiences.controls.findIndex(ele => ele === element);
     this.experiences.removeAt(index);
@@ -57,26 +59,28 @@ export class ExperienceDetailsComponent {
     this.addNewExperience = true;
   }
 
+  //save experience
   saveExperience(element: FormGroup) {
-    if (element.status === 'INVALID') {
+    if (element.invalid) {
       element.markAllAsTouched();
       return;
     }
     this.addNewExperience = true;
-
-    const index = this.experiencesData.findIndex((obj: any) => obj.id === element.value.id)
+    /* const index = this.experiencesData.findIndex((obj: any) => obj.id === element.value.id)
     if (index > -1) {
       this.experiencesData[index] = element.value;
     } else {
       this.experiencesData.push(element.value);
-    }
+    } */
     element.disable();
   }
 
+  //enable form to edit the experience
   editExperience(element: FormGroup) {
     element.enable();
   }
 
+  //reset form 
   resetForm(element: FormGroup) {
     const index = this.experiences.controls.findIndex(ele => ele === element);
     this.experiences.controls[index].reset();

@@ -125,7 +125,7 @@ export class EmployeeComponent {
   //Create Education details form
   getEducationDetailForm() {
     return this.fb.group({
-      educations: this.fb.array([])
+      educations: this.fb.array([], Validators.minLength(1))
     });
   }
 
@@ -145,35 +145,65 @@ export class EmployeeComponent {
     });
   }
 
+  //stepper back 
   goBack(stepper: MatStepper) {
     stepper.previous();
   }
 
+  //stepper next
   goForward(stepper: MatStepper) {
-    if (this.personalDetails.invalid) {
-      this.personalDetails.markAllAsTouched();
-      return;
-    } else if (this.educationalDetails.invalid) {
-      this.educationalDetails.markAllAsTouched();
-      return;
-    } else if (this.proffesionalDetails.invalid) {
-      this.proffesionalDetails.markAllAsTouched();
-      return;
-    } else if (this.experienceDetails.invalid) {
-      this.experienceDetails.markAllAsTouched();
-      return;
-    } else if (this.educationalDetails.invalid) {
-      this.educationalDetails.markAllAsTouched();
-      return;
-    } else if (this.currentOrgDetails.invalid) {
-      this.currentOrgDetails.markAllAsTouched();
-      return;
+    console.log(this.educationalDetails.controls['educations'])
+    switch (stepper.selectedIndex) {
+      case 0:
+        if (this.personalDetails.invalid) {
+          this.personalDetails.markAllAsTouched();
+          return;
+        }
+        break;
+      case 1:
+        if (this.bankDetails.invalid) {
+          this.bankDetails.markAllAsTouched();
+          return;
+        }
+        break;
+      case 2:
+        if (this.proffesionalDetails.invalid) {
+          this.proffesionalDetails.markAllAsTouched();
+          return;
+        }
+        break;
+      case 3:
+        if (this.educationalDetails.value.educations.length < 1) {
+          this.snabarService.openSnackBar('Plese add at least one education');
+          return;
+        } else {
+          this.educationalDetails.markAllAsTouched();
+          if (this.educationalDetails.invalid) {
+            return;
+          }
+        }
+        break;
+      case 4:
+        if (this.experienceDetails.value.experiences.length < 1) {
+          this.snabarService.openSnackBar('Plese add at least one experience');
+          return;
+        } else {
+          this.experienceDetails.markAllAsTouched();
+          if (this.experienceDetails.invalid) {
+            return;
+          }
+        }
+        break;
     }
+    stepper.next();
 
-    stepper.next()
   }
 
   saveData() {
+    if (this.currentOrgDetails.invalid) {
+      this.currentOrgDetails.markAllAsTouched();
+      return;
+    }
     let employeeData = JSON.parse(localStorage.getItem('employee') || '[]');
     const index = employeeData.findIndex((emp: any) => emp.id === this.employeeId);
     const employee = {
@@ -192,14 +222,9 @@ export class EmployeeComponent {
     } else {
       employeeData.push(employee);
       this.snabarService.openSnackBar('Employee Added Successfully !');
-
     }
-
     localStorage.setItem('employee', JSON.stringify(employeeData));
-
     this.route.navigate(['/']);
-
-
   }
 
   populateForms() {
@@ -258,7 +283,4 @@ export class EmployeeComponent {
   backToList() {
     this.route.navigate(['/']);
   }
-
-
-
 }

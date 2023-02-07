@@ -9,8 +9,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./education-details.component.scss']
 })
 export class EducationDetailsComponent {
-  @Input() educationalDetailsForm!: FormGroup;
 
+  @Input() educationalDetailsForm!: FormGroup;
   @Input() set educationDetails(value: any) {
     if (value) {
       value.map((item: any) => {
@@ -30,8 +30,7 @@ export class EducationDetailsComponent {
     return this.educationalDetailsForm.get("educations") as FormArray
   }
 
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(private fb: FormBuilder) { }
 
   newEducation(data?: any) {
     return this.fb.group({
@@ -57,12 +56,11 @@ export class EducationDetailsComponent {
   }
 
   saveEducation(element: FormGroup) {
-    if (element.status === 'INVALID') {
+    if (element.invalid) {
       element.markAllAsTouched();
       return;
     }
     this.addNewEducation = true;
-
     const index = this.educationData.findIndex((obj: any) => obj.id === element.value.id)
     if (index > -1) {
       this.educationData[index] = element.value;
@@ -73,7 +71,6 @@ export class EducationDetailsComponent {
   }
 
   editEducation(element: FormGroup) {
-
     element.enable();
   }
 

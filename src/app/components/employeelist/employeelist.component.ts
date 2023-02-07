@@ -37,14 +37,17 @@ export class EmployeelistComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  //fetch employee data from localstorage
   getEmployeeData() {
     this.allEmployee = JSON.parse(localStorage.getItem('employee') || '[]');
   }
 
+  //redirect to add-employee page
   addEmployee() {
     this.route.navigate(['/add-employee']);
   }
 
+  // redirect to add-employee page with id
   edit(id: number) {
     this.route.navigate(
       ['/add-employee'],
@@ -52,6 +55,7 @@ export class EmployeelistComponent implements AfterViewInit {
     );
   }
 
+  // remove employee
   remove(id: number) {
     const index = this.allEmployee.findIndex((emp: any) => emp.id === id);
     if (index > -1) {
@@ -59,10 +63,10 @@ export class EmployeelistComponent implements AfterViewInit {
       localStorage.setItem('employee', JSON.stringify(this.allEmployee));
       this.getEmployeeData();
       this.snabarService.openSnackBar('Employee Added Successfully !');
-
     }
   }
 
+  //open profile preview page
   profilePreview(img: string) {
     this.dialog.open(PreviewProfileComponent, {
       data: {
@@ -71,6 +75,7 @@ export class EmployeelistComponent implements AfterViewInit {
     });
   }
 
+  //open resume preview page
   resumePreview(file: string) {
     this.dialog.open(CvProfilePreviewComponent, {
       data: {

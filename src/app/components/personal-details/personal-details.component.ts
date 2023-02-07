@@ -8,8 +8,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class PersonalDetailsComponent implements OnInit {
   @Input() personalDetailsForm!: FormGroup;
-  @ViewChild('presetAddress') el: ElementRef;
-
   fileName = '';
   today = new Date();
   profilePath: string;
@@ -23,6 +21,7 @@ export class PersonalDetailsComponent implements OnInit {
     this.checkIfAddressIsSame();
   }
 
+  // copy present address to permanent address
   copyAddress() {
     this.copyAddresses = !this.copyAddresses;
     this.personalDetailsForm.patchValue({
@@ -30,6 +29,7 @@ export class PersonalDetailsComponent implements OnInit {
     });
   }
 
+  // set image on select 
   onFileSelected(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -50,6 +50,7 @@ export class PersonalDetailsComponent implements OnInit {
     }
   }
 
+  //remove profile
   removeProfile() {
     this.personalDetailsForm.patchValue({
       profile: ''
@@ -58,12 +59,14 @@ export class PersonalDetailsComponent implements OnInit {
     this.profilePath = this.localImagePath;
   }
 
+  // set flage based on record (edit)
   checkIfAddressIsSame() {
     if (this.personalDetailsForm.controls['isSameAddress']?.value === true) {
       this.copyAddresses = true;
     }
   }
 
+  //on keypress copy present address to permant address
   copyPresentToPermanent() {
     if (this.copyAddresses) {
       this.personalDetailsForm.patchValue({
@@ -72,7 +75,6 @@ export class PersonalDetailsComponent implements OnInit {
     } else {
       return;
     }
-
   }
 
 }
