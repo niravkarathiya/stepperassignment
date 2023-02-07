@@ -1,4 +1,11 @@
-.btn-list{
+.btn-list-right {
     float: right;
     display: flex;
+    margin-right: 45px;
+}
+
+.btn-list-left {
+    float: left;
+    display: flex;
+    margin-left: 30px;
 }

@@ -1,9 +1,23 @@
-.container{
+.container {
     width: 100%;
 }
-.row{
-    margin-top:20px;
+
+.row {
+    margin-top: 20px;
 }
-.btn-add-emp{
+
+.btn-add-emp {
     float: right;
+}
+
+.img-avatar {
+    border: 1px solid gray;
+    border-radius: 10%;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.cv-preview {
+    cursor: pointer;
 }

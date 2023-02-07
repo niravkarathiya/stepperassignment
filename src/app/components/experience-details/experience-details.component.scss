@@ -1,21 +1,36 @@
-.btn-add-educatin{
-    float: right;
-  }
-  .container{
-    display: block;
-  }
-  .row{
-    margin-top:3px
-  }
-  .btn-add-exp{
-    float: right;
-  }
-  .exp-form{
-    display: flex;
-    justify-content: center;
-    margin: 80px;
-  }
-  .btn-list{
-    margin-left: 10px;
-  }
-  
+.btn-add-educatin {
+  float: right;
+}
+
+.container {
+  display: block;
+}
+
+.row {
+  margin-top: 3px
+}
+
+.btn-add-exp {
+  float: right;
+}
+
+.exp-form {
+  display: flex;
+  justify-content: center;
+  margin: 80px;
+}
+
+.btn-list {
+  margin-left: 10px;
+}
+
+mat-header-cell {
+  justify-content: center;
+}
+
+mat-header-cell.mat-mdc-header-cell,
+mat-cell.mat-mdc-cell,
+mat-footer-cell.mat-mdc-footer-cell {
+  padding: 0;
+  margin: 0;
+}

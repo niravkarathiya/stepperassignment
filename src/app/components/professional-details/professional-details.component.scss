@@ -1,22 +1,52 @@
-.container{
+.container {
   width: 100%;
-  justify-content: center;
   display: block;
 }
-.row{
+
+.row {
   width: 100%;
   display: flex;
-  padding:20px;
-  margin:10px;
-  justify-content: left;
 }
 
-mat-form-field{
-  margin: 10px;
+.header {
+  width: 100%;
+  margin-left: 10px;
 }
-.file-input{
+
+mat-form-field {
+  margin: 10px;
+  width: 90%;
+}
+
+.file-input {
   display: none;
 }
 
+resume-input {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
 
+  span {
+    text-align: center;
+  }
+}
 
+.col-6 {
+  width: 50%;
+}
+
+.col-4 {
+  width: 30.50%;
+  text-align: center;
+
+}
+
+.exp-header {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  padding-top: 3%;
+  font-size: 20px;
+  color: gray;
+}

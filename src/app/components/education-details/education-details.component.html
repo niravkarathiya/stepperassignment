@@ -1,71 +1,81 @@
 <div class="container">
   <div class="row">
     <div class="header">
-      <span>Education Details</span>`
+      <h2>Education Details</h2>
     </div>
   </div>
   <div class="row">
-    <div class="btn-add-educatin">
-      <button mat-raised-button color="warn" (click)=" addEducation()">+ Add Education</button>
+    <div class="col-12">
+      <div class="btn-add-education">
+        <button mat-button color="primary" (click)=" addEducation()" [disabled]="!addNewEducation">+ Add
+          Education</button>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div>
-    </div>
-    <div>
+    <div class="col-12">
       <form [formGroup]="educationalDetailsForm" autocomplete="off">
         <div formArrayName="educations">
           <mat-table [dataSource]="dataSource">
             <ng-container matColumnDef="educationName">
               <mat-header-cell *matHeaderCellDef> Education Name </mat-header-cell>
               <mat-cell *matCellDef="let element;" [formGroup]="element">
-                <mat-form-field>
+                <mat-form-field appearance="outline">
                   <input matInput placeholder="Education Name" required formControlName="educationName">
+                  <mat-error>Education Name is Required</mat-error>
                 </mat-form-field>
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="universityName">
               <mat-header-cell *matHeaderCellDef> University Name </mat-header-cell>
-              <mat-cell *matCellDef="let element;" [formGroup]="element" >
-                <mat-form-field>
+              <mat-cell *matCellDef="let element;" [formGroup]="element">
+                <mat-form-field appearance="outline">
                   <input matInput placeholder="University Name" required formControlName="universityName">
+                  <mat-error>University Name is Required</mat-error>
                 </mat-form-field>
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="result">
               <mat-header-cell *matHeaderCellDef> Result </mat-header-cell>
-              <mat-cell *matCellDef="let element;" [formGroup]="element" >
-                <mat-form-field>
+              <mat-cell *matCellDef="let element;" [formGroup]="element">
+                <mat-form-field appearance="outline">
                   <input matInput placeholder="Result" required formControlName="result">
+                  <mat-error>Result is Required</mat-error>
                 </mat-form-field>
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="yearOfPassing">
               <mat-header-cell *matHeaderCellDef> Year Of Passing </mat-header-cell>
-              <mat-cell *matCellDef="let element;" [formGroup]="element" >
-                <mat-form-field>
+              <mat-cell *matCellDef="let element;" [formGroup]="element">
+                <mat-form-field appearance="outline">
                   <input matInput placeholder="Year Of Passing" required formControlName="yearOfPassing">
+                  <mat-error>Year Of Passing is Required</mat-error>
                 </mat-form-field>
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="action">
-              <mat-header-cell *matHeaderCellDef> Year Of Passing </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
               <mat-cell *matCellDef="let element" [formGroup]="element">
                 <div class="btn-list">
-                  <button mat-mini-fab color="primary">
+                  <button mat-icon-button color="primary" (click)="saveEducation(element)" *ngIf="!element.disabled">
                     <mat-icon>check</mat-icon>
                   </button>
-                  <button mat-mini-fab color="warn" (click)="removeEducation(element)">
+                  <button mat-icon-button color="warn" (click)="removeEducation(element)">
                     <mat-icon>delete</mat-icon>
+                  </button>
+                  <button mat-icon-button (click)="editEducation(element)" *ngIf="element.disabled">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="accent" (click)="resetForm(element)" *ngIf="!element.disabled">
+                    <mat-icon>cancel</mat-icon>
                   </button>
                 </div>
               </mat-cell>
             </ng-container>
-
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>

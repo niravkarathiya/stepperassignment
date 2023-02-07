@@ -10,18 +10,25 @@ import { ProfessionalDetailsComponent } from './components/professional-details/
 import { EducationDetailsComponent } from './components/education-details/education-details.component';
 import { ExperienceDetailsComponent } from './components/experience-details/experience-details.component';
 import { CurrentOrganizationDetailsComponent } from './components/current-organization-details/current-organization-details.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { EmployeelistComponent } from './components/employeelist/employeelist.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { PreviewProfileComponent } from './components/preview-profile/preview-profile.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CvProfilePreviewComponent } from './components/cv-profile-preview/cv-profile-preview.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -35,6 +42,8 @@ import { EmployeelistComponent } from './components/employeelist/employeelist.co
     ExperienceDetailsComponent,
     CurrentOrganizationDetailsComponent,
     EmployeelistComponent,
+    PreviewProfileComponent,
+    CvProfilePreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,12 @@ import { EmployeelistComponent } from './components/employeelist/employeelist.co
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
+    PdfViewerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

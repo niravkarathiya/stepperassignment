@@ -1,28 +1,57 @@
-.container{
+.container {
   width: 100%;
   display: block;
 }
-.row{
+
+.row {
   display: flex;
-  padding: 0;
-  margin: 0;
   width: 100%;
+  margin-top: 10px;
 }
+
+.header {
+  width: 100%;
+  margin-left: 10px;
+}
+
 .profile {
-  text-align: center;
+  width: 100%;
+  display: block;
 }
 
-mat-form-field{
+.file-input {
+  display: none;
+
+}
+
+.profile-input {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+
+  span {
+    text-align: center;
+  }
+}
+
+mat-form-field {
   margin: 10px;
+  width: 90%;
 }
 
-.profile-img{
+.profile-img {
   height: 100px;
   width: 100px;
   border: 1px solid black;
   justify-content: center;
-  text-align: center;
   border-radius: 5px;
+  margin-left: 10px;
 }
 
+.col-4 {
+  width: 33.33%;
+}
 
+.col-6 {
+  width: 50%;
+}

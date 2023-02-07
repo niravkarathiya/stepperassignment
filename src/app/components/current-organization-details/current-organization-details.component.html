@@ -1,29 +1,37 @@
 <div class="container">
   <form [formGroup]="currentOrgDetailsForm">
     <div class="row">
-      <h2>Current Organization Details</h2>
+      <div class="header">
+        <h2>Current Organization Details</h2>
+      </div>
     </div>
     <div class="row">
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
           <mat-label> Joining date</mat-label>
-          <input matInput placeholder="Joining Date" formControlName="joiningDate">
+          <input matInput [matDatepicker]="joinpicker" formControlName="joiningDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="joinpicker"></mat-datepicker-toggle>
+          <mat-datepicker #joinpicker></mat-datepicker>
           <mat-error>Joining date is Required</mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
           <mat-label>Next Appraisal Date</mat-label>
-          <input matInput placeholder="Next Appraisal Date" formControlName="nextAppraisalDate">
+          <input matInput [matDatepicker]="picker" formControlName="nextAppraisalDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <mat-error>Next Appraisal Date Required</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row">
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
           <mat-label>Current CTC</mat-label>
-          <input matInput placeholder="Enter Current CTC" formControlName="currentCTC">
+          <input matInput placeholder="Enter Current CTC" formControlName="currentCTC" type="number">
           <mat-error>Current CTC is Required</mat-error>
         </mat-form-field>
       </div>

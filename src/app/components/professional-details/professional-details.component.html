@@ -1,17 +1,19 @@
 <div class="container">
   <form [formGroup]="proffesionalDetailsForm">
     <div class="row">
-      <h2>Proffesional Details</h2>
+      <div class="header">
+        <h2>Proffesional Details</h2>
+      </div>
     </div>
     <div class="row">
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
           <mat-label>Designation</mat-label>
           <input matInput placeholder="Enter Designation" formControlName="designation">
           <mat-error>Designation is Required</mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
           <mat-label>Department</mat-label>
           <input matInput placeholder="Enter Department" formControlName="department">
@@ -20,23 +22,32 @@
       </div>
     </div>
     <div class="row">
-      <div>
-        <mat-form-field appearance="outline">
-          <mat-label>Year</mat-label>
-          <mat-select formControlName="year">
-            <mat-option *ngFor="let year of years" value={{year}}>{{year}}</mat-option>
-          </mat-select>
-          <mat-error>Year is Required</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Months</mat-label>
-          <mat-select formControlName="month">
-            <mat-option *ngFor="let month of months" value={{month}}>{{month}}</mat-option>
-          </mat-select>
-          <mat-error>Months is Required</mat-error>
-        </mat-form-field>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-4 exp-header">
+            <span>Experience</span>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Year</mat-label>
+              <mat-select formControlName="year">
+                <mat-option *ngFor="let year of years" value={{year}}>{{year}}</mat-option>
+              </mat-select>
+              <mat-error>Year is Required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Months</mat-label>
+              <mat-select formControlName="month">
+                <mat-option *ngFor="let month of months" value={{month}}>{{month}}</mat-option>
+              </mat-select>
+              <mat-error>Months is Required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
       </div>
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
           <mat-label>Current Location</mat-label>
           <input matInput placeholder="Enter Current Location" formControlName="currentLocation">
@@ -45,7 +56,7 @@
       </div>
     </div>
     <div class="row">
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
           <mat-label>Skills</mat-label>
           <mat-select formControlName="skills" multiple>
@@ -60,12 +71,23 @@
           <mat-error>Please Select Skills</mat-error>
         </mat-form-field>
       </div>
-      <div>
-        <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload formControlName="resume">
-        {{fileName || "No file uploaded yet."}}
-        <button mat-mini-fab color="primary" (click)="fileUpload.click()" type="button">
-          <mat-icon>attach_file</mat-icon>
-        </button>
+      <div class="col-6">
+        <div class="row">
+          <div class="resume-input">
+            <span>{{fileName || "No file uploaded yet."}}</span>
+            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload
+              accept="application/pdf">
+            <button mat-icon-button color="primary" (click)="fileUpload.click()" type="button">
+              <mat-icon>attach_file</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeResume()">
+              <mat-icon *ngIf="fileName" color="warn">delete</mat-icon>
+            </button>
+            <button mat-icon-button (click)="viewResume()">
+              <mat-icon *ngIf="fileName" color="primary">visibility</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </form>
