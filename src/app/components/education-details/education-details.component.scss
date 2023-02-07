@@ -1,17 +1,40 @@
-.container{
+.container {
+  width: 100%;
   display: block;
 }
-.row{
-  margin-top:3px
+
+.row {
+  width: 100%;
+  margin-top: 10px;
+  display: block;
 }
-.btn-add-educatin{
+
+.col-12 {
+  width: 100%;
+  background-color: red;
+}
+
+.btn-add-education {
   float: right;
 }
-.education-form{
+
+.education-form {
   display: flex;
   justify-content: center;
   margin: 80px;
 }
-.btn-list{
+
+.btn-list {
   margin-left: 10px;
+}
+
+mat-header-cell {
+  justify-content: center;
+}
+
+mat-header-cell.mat-mdc-header-cell,
+mat-cell.mat-mdc-cell,
+mat-footer-cell.mat-mdc-footer-cell {
+  padding: 0;
+  margin: 0;
 }

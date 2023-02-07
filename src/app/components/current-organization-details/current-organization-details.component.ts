@@ -7,6 +7,6 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./current-organization-details.component.scss']
 })
 export class CurrentOrganizationDetailsComponent {
-  @Input() currentOrgDetailsForm!:FormGroup;
+  @Input() currentOrgDetailsForm!: FormGroup;
 
 }

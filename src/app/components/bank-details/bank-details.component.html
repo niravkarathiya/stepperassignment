@@ -4,8 +4,6 @@
       <h2>Bank Details</h2>
     </div>
     <div class="row">
-    </div>
-    <div class="row mt-5">
       <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>Bank Name</mat-label>
@@ -24,7 +22,10 @@
         <mat-form-field appearance="outline">
           <mat-label>Bank Account Number</mat-label>
           <input matInput placeholder="Enter Account Number" formControlName="accountNubmer">
-          <mat-error>Account Number is Required</mat-error>
+          <mat-error *ngIf="bankDetailsForm.get('accountNubmer')?.hasError('required')">Account Number is
+            Required</mat-error>
+          <mat-error *ngIf="bankDetailsForm.get('accountNubmer')?.hasError('pattern')">Bank Account Number must be of
+            9-18 digits</mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -33,21 +34,29 @@
         <mat-form-field appearance="outline">
           <mat-label>IFSC</mat-label>
           <input matInput placeholder="Enter IFSC Code" formControlName="IFSC">
-          <mat-error>IFSC is Required</mat-error>
+          <mat-error *ngIf="bankDetailsForm.get('IFSC')?.hasError('required')">IFSC is Required</mat-error>
+          <mat-error *ngIf="bankDetailsForm.get('IFSC')?.hasError('pattern')">Enter Valid IFSC (eg.
+            SBIN0125620)</mat-error>
+
         </mat-form-field>
       </div>
       <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>Adhar Number</mat-label>
           <input matInput placeholder="Enter Adhar Number" formControlName="adhar">
-          <mat-error>Adhar Number is Required</mat-error>
+          <mat-error *ngIf="bankDetailsForm.get('adhar')?.hasError('required')">Adhar Number is Required</mat-error>
+          <mat-error *ngIf="bankDetailsForm.get('adhar')?.hasError('pattern')">Enter Valid ADHAR number (eg. 3675 9834
+            6015)</mat-error>
+
         </mat-form-field>
       </div>
       <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>PAN Number</mat-label>
           <input matInput placeholder="Enter PAN Number" formControlName="PAN">
-          <mat-error>PAN Number is Required</mat-error>
+          <mat-error *ngIf="bankDetailsForm.get('PAN')?.hasError('required')">PAN Number is Required</mat-error>
+          <mat-error *ngIf="bankDetailsForm.get('PAN')?.hasError('pattern')">Enter Valid PAN number (eg.
+            ABCTY1234D)</mat-error>
         </mat-form-field>
       </div>
     </div>

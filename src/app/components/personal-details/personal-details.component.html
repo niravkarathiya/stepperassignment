@@ -1,32 +1,43 @@
 <div class="container">
   <form [formGroup]="personalDetailsForm">
     <div class="row">
-      <h2>Personal Details</h2>
-    </div>
-    <div>
-      <div>
-        <div class="profile-img">
-          <img src="" width="100%" height="100%">
-        </div>
-          <input mtInput formControlName="profile" type="file">
-        </div>
+      <div class="header">
+        <h2>Personal Details</h2>
+      </div>
     </div>
     <div class="row">
-      <div>
+      <div class="profile">
+        <div class="profile-img">
+          <img width="100%" height="100%" src={{profilePath}}>
+        </div>
+        <div class="profile-input">
+          <span>{{fileName || "No file uploaded yet."}}</span>
+          <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload accept="image/jpeg">
+          <button mat-icon-button color="primary" (click)="fileUpload.click()" type="button">
+            <mat-icon>{{fileName? 'edit':'attach_file'}}</mat-icon>
+          </button>
+          <button mat-icon-button (click)="removeProfile()" type="button">
+            <mat-icon *ngIf="fileName" color="warn">delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>First Name</mat-label>
           <input matInput placeholder="Enter First Name" formControlName="firstName">
           <mat-error>First Name is Required</mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>Middle Name</mat-label>
           <input matInput placeholder="Enter Middle Name" formControlName="middleName">
           <mat-error>Middle Name is Required</mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>Last Name</mat-label>
           <input matInput placeholder="Enter Last Name" formControlName="lastName">
@@ -35,24 +46,26 @@
       </div>
     </div>
     <div class="row">
-      <div>
+      <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput placeholder="Enter Email" formControlName="email">
           <mat-error>Email is Required</mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>Phone</mat-label>
           <input matInput placeholder="Enter Phone Number" formControlName="phone">
-          <mat-error>Phone Number is Required</mat-error>
+          <mat-error *ngIf="personalDetailsForm.get('phone')?.hasError('required')">Phone Number is Required</mat-error>
+          <mat-error *ngIf="personalDetailsForm.get('phone')?.hasError('pattern')">Enter Valid phone number (eg.
+            9876543210)</mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="col-4">
         <mat-form-field appearance="outline">
           <mat-label>Date of Birth</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="dob">
+          <input matInput [matDatepicker]="picker" formControlName="dob" [max]="today">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -61,23 +74,23 @@
       </div>
     </div>
     <div class="row">
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
           <mat-label>Present Address</mat-label>
-          <textarea matInput formControlName="presentAddress"></textarea>
+          <textarea matInput formControlName="presentAddress" (keyup)="copyPresentToPermanent()"></textarea>
           <mat-error>Present Address Required</mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div class="col-6">
         <mat-form-field appearance="outline">
-        <mat-label>Permanent Address</mat-label>
-        <textarea matInput formControlName="permanentAddress"></textarea>
-        <mat-error>Permanent Address Required</mat-error>
+          <mat-label>Permanent Address</mat-label>
+          <textarea matInput formControlName="permanentAddress"></textarea>
+          <mat-error>Permanent Address Required</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row">
-      <mat-checkbox (change)="copyAddress()">Same as Present Address</mat-checkbox>
+      <mat-checkbox (change)="copyAddress()" formControlName="isSameAddress">Same as Present Address</mat-checkbox>
     </div>
   </form>
 </div>
