@@ -61,20 +61,17 @@ export class PersonalDetailsComponent implements OnInit {
 
   // set flage based on record (edit)
   checkIfAddressIsSame() {
-    if (this.personalDetailsForm.controls['isSameAddress']?.value === true) {
+    if (this.personalDetailsForm.controls['isSameAddress']?.value) {
       this.copyAddresses = true;
     }
   }
 
   //on keypress copy present address to permant address
   copyPresentToPermanent() {
-    if (this.copyAddresses) {
-      this.personalDetailsForm.patchValue({
-        permanentAddress: this.personalDetailsForm.controls['presentAddress']?.value
-      });
-    } else {
-      return;
-    }
+    if (!this.copyAddresses) { return; }
+    this.personalDetailsForm.patchValue({
+      permanentAddress: this.personalDetailsForm.controls['presentAddress']?.value
+    });
   }
 
 }

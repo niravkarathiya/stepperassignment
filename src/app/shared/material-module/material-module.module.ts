@@ -61,4 +61,4 @@ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/mater
     MatSnackBarModule
   ]
 })
-export class MaterialModuleModule { }
+export class MaterialModule { }

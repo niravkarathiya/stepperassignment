@@ -13,7 +13,7 @@ import { CurrentOrganizationDetailsComponent } from './components/current-organi
 import { EmployeelistComponent } from './components/employeelist/employeelist.component';
 import { PreviewProfileComponent } from './components/preview-profile/preview-profile.component';
 import { CvProfilePreviewComponent } from './components/cv-profile-preview/cv-profile-preview.component';
-import { MaterialModuleModule } from './shared/material-module/material-module.module';
+import { MaterialModule } from './shared/material-module/material-module.module';
 
 
 
@@ -35,7 +35,7 @@ import { MaterialModuleModule } from './shared/material-module/material-module.m
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModuleModule
+    MaterialModule
 
   ],
   providers: [],

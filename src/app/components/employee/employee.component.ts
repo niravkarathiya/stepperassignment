@@ -152,7 +152,6 @@ export class EmployeeComponent {
 
   //stepper next
   goForward(stepper: MatStepper) {
-    console.log(this.educationalDetails.controls['educations'])
     switch (stepper.selectedIndex) {
       case 0:
         if (this.personalDetails.invalid) {
