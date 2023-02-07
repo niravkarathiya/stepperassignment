@@ -66,12 +66,6 @@ export class ExperienceDetailsComponent {
       return;
     }
     this.addNewExperience = true;
-    /* const index = this.experiencesData.findIndex((obj: any) => obj.id === element.value.id)
-    if (index > -1) {
-      this.experiencesData[index] = element.value;
-    } else {
-      this.experiencesData.push(element.value);
-    } */
     element.disable();
   }
 

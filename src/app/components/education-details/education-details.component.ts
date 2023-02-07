@@ -35,7 +35,7 @@ export class EducationDetailsComponent {
   newEducation(data?: any) {
     return this.fb.group({
       id: [data?.id || Math.floor(1000 + Math.random() * 9000)],
-      educationName: [data?.educationName || '', Validators.required,],
+      educationName: [data?.educationName || '', Validators.required],
       universityName: [data?.universityName || '', Validators.required],
       result: [data?.result || '', Validators.required],
       yearOfPassing: [data?.yearOfPassing || '', Validators.required]
